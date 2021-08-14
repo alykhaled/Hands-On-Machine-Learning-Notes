@@ -1,0 +1,42 @@
+\documentclass{article}
+
+\usepackage{amsmath} 
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\title{Chapter 7} 
+\author{Aly Khaled} 
+\date{\today} 
+
+\begin{document} 
+    \maketitle
+    \section{What is Ensemble Learning?}
+    \begin{itemize}
+    \item Ensemble Learning in using more than one predictor then it aggregate the prediction of each predictor and predict the class that gets most votes. 
+    \item \textbf{Ensemble Learning} works best when the predictors are \textbf{independent} form each other as possible and we can achieve this by \textbf{training them using very different algorithms}.
+    \item \textbf{Soft voting} is to predict the class with the highest class probability averaged over all the individual \textbf{but this need all classifier to be able to estimate class probabilities which means that they all have a \textit{predict\_proba()} method}
+    \item \textbf{Soft voting} is often achieve higher performance than \textbf{hard voting} because it gives more weight to highly confident votes
+    \item When we train all the predictors we can make prediction for a new instance by simply aggregating the predictions of all predictors using:
+    	\begin{itemize}
+    		\item \textbf{Statistical mode} for classification
+    		\item \textbf{Average} for regression 
+    	\end{itemize}
+    \item Each individual predictor has a higher bias than if it were trained on the original training set but \textbf{aggregation} reduces both bias and variance and the \textbf{net result} is that the ensemble has a similar bias but a lower variance than a single predictors trained on the original training set
+    \end{itemize}
+   
+    \section{Bagging VS Pasting} 
+    \begin{itemize}
+	    \item There are two approaches for ensemble learning.
+    	\begin{itemize}
+    		\item \textbf{First:} Use different training algorithms.
+    		\item \textbf{Second:} Use the same training algorithm for every predictor and train them on different random subsets of the training set.
+    	\end{itemize}
+	    \item There are two types of sampling:
+	    \begin{itemize}
+			\item \textbf{Bagging:} When sampling is performed with replacement.
+	   		\item \textbf{Pasting:} When sampling is performed without replacement. 
+	    \end{itemize}
+    	\item Only \textbf{Bagging} allows training instances to be sampled several times for the same predictor 
+    	\item In \textbf{Scikit\textendash Learn} the \textbf{BaggingClassifier} class automatically performs soft voting instead of hard voting if the base classifier can estimate class probabilities which means that it has a \textit{predict\_proba()} method
+    	
+    \end{itemize}
+    
+\end{document}
