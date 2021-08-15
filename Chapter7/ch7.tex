@@ -2,7 +2,7 @@
 
 \usepackage{amsmath} 
 \usepackage[a4paper, total={6in, 8in}]{geometry}
-\title{Chapter 7} 
+\title{Chapter 7: Ensemble Learning and Random Forests} 
 \author{Aly Khaled} 
 \date{\today} 
 
@@ -34,9 +34,26 @@
 			\item \textbf{Bagging:} When sampling is performed with replacement.
 	   		\item \textbf{Pasting:} When sampling is performed without replacement. 
 	    \end{itemize}
-    	\item Only \textbf{Bagging} allows training instances to be sampled several times for the same predictor 
-    	\item In \textbf{Scikit\textendash Learn} the \textbf{BaggingClassifier} class automatically performs soft voting instead of hard voting if the base classifier can estimate class probabilities which means that it has a \textit{predict\_proba()} method
+    	\item Only \textbf{Bagging} allows training instances to be sampled several times for the same predictor .
+    	\item In \textbf{Scikit\textendash Learn} the \textbf{BaggingClassifier} class automatically performs soft voting instead of hard voting if the base classifier can estimate class probabilities which means that it has a \textit{predict\_proba()} method.
+    	\item \textbf{Bagging} ends up with a slightly \textbf{higher bias} than pasting; but the extra diversity also means that the predictors end up being \textbf{less correlated} so the ensemble's variance is reduced.
+    	\item \textbf{Bagging} often results in better models.
+    	\item Its recommended if you have spare time and CPU power to use cross validation to evaluate both of bagging and pasting and select the one that works best.
+    	\item In \textbf{Scikit\textendash Learn} the \textbf{BaggingClassifier} class by default it samples \textit{m} training instances with replacement (\textit{bootstrap=True}) where \textit{m} is the size of the training set. This means only about 63\% of the training set are sampled and the remaining 37\% are called \textit{(out\textendash of\textendash bag)} instances, so we can evaluate the predictor on these instances without making validation set
+    	
+    	- To evaluate the predictor on these instances add (\textit{obb\_score=True}) parameter and access it through (\textit{oob\_score\_}) variable.
+    	\item In \textbf{Scikit\textendash Learn} the \textbf{BaggingClassifier} class can sample features too and sampling is controlled by two hyperparameters: \textit{max\_features} and \textit{bootstrap\_features} and sampling features is useful when dealing with high-dimensional inputs (such as images).
+    	\item Sampling both training instances and features is called \textbf{Random Patches Method} but keeping all training instances and sampling features is called \textbf{Random Subspaces Method}
     	
     \end{itemize}
-    
+    \section{Random Forests} 
+    \begin{itemize}
+		\item \textbf{Random Forests} is an ensembles of \textbf{Decision Trees} and it trained using \textbf{Bagging} method but sometimes by \textbf{Pasting}.
+		\item You can make \textbf{Random Forests} by using \textbf{BaggingClassifier} class but it recommended to make it using \textbf{RandomForestClassifier} class (or by \textbf{RandomForestRegressor} class for regression) because it more convenient and optimized for \textbf{Decision Trees}.  
+		\item \textbf{Random Forests} algorithm introduces extra randomness  when growing tree.
+		\item Instead of searching for the very best features when splitting a node. it searches for the best features among a random subset of features. 
+		\item The algorithm results in greater tree diversity and making overall better model.
+		\item 
+    \end{itemize}
+
 \end{document}
