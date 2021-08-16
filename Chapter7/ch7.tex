@@ -68,6 +68,9 @@
 				\item XGBoost.
     		\end{itemize}
     	\item The general idea of boosting is to train predictors sequentially and each trying to correct its predecessor.
+   	\end{itemize}
+   	\subsection{AdaBoosting}
+	\begin{itemize}
     	\item \textbf{AdaBoost} technique is to pay more attention to the training instances that the predecessor underfitted
     	\item \textbf{AdaBoost} steps are:
     	\begin{enumerate}
@@ -94,8 +97,25 @@
     	\end{enumerate}
     	\item To make prediction the \textbf{AdaBoost} simply compute the predictions of all the predictors and weighs them using the predictors weights $\alpha_{j}$, then the predicted class is the one that receives the majority of weighted votes
     	\[ \hat{y}(x) = \underset{k}{argmax} \underset{\hat{y}_{j} = k}{\sum_{j = 1}^{N} \alpha_{j}} \]
-    	where N is the number of predictors. 
+    	where N is the number of predictors.
+    	\item \textbf{Scikit\textendash Learn} uses multiclass version of \textbf{AdaBoost} called \textbf{SAMME}.
+    	\item When there are only two classes \textbf{SAMME} is equivalent to \textbf{AdaBoost}.
+    	\item If the predictors can estimate their probabilities we can use a variant of \textbf{SAMME} called \textbf{SAMME.R} which relies on class probabilities rather than predictions and generally performs better.
+    	\item \textbf{Decision Stumps} is a tree composed of as single decision node plus two leaf nodes. 
+    \end{itemize}
+    \subsection{Gradient Boosting}
+    \begin{itemize}
+    	\item \textbf{Gradient Boosting} is similar to \textbf{AdaBoost} but instead of tweaking the instance weights at every iteration like \textbf{AdaBoost} does, this method tried to fit the new predictor to the residual errors made by the previous predictor.
+    	\item Using Gradient Boosting in regression is called \textbf{Gradient Tree Boosting} or \textbf{Gradient Boosted Regression Trees}.
+    	\item In \textbf{Scikit\textendash Learn} you can use \textit{(GradientBoostingRegressor)} class to train \textbf{GBRT} ensembles.
+    	\item The \textit{learning\_rate} hyperparameter scales the contribution of each tree. If you set it to a low value such as 0.1, you will need more trees but the prediction will generalize better and this generalization technique called \textit{shrinkage}.
     \end{itemize}
 	\section{Stacking} 
+	\begin{itemize}
+		\item Its idea is instead of using trivial functions like hard voting to aggregate the predictions, we train a model to perform this aggregation.
+		\item In stacking we take the prediction of all predictors as inputs to final predictor called \textbf{Blender}
+		\item To train a \textbf{Blender}, a common approach is to use a hold-out set.
+		\item To train a \textbf{Blender} first we split the training set to two subsets, then we use the first subset to train the predictors. Then the predictors are used to make predictions on the second set. We can create a new training set using these predicted values as input features and keeping the target value. The blender is trained on this new training set.
+	\end{itemize}
 
 \end{document}
