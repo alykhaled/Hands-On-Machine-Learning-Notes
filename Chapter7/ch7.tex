@@ -53,9 +53,49 @@
 		\item \textbf{Random Forests} algorithm introduces extra randomness  when growing tree.
 		\item Instead of searching for the very best features when splitting a node. it searches for the best features among a random subset of features. 
 		\item The algorithm results in greater tree diversity and making overall better model.
+		\item It is possible to make trees even more random by using random threshold for each feature rather than searching for best threshold and this tree called \textbf{Extremely Randomized Trees}.
+		\item \textbf{Extremely Randomized Trees} trades more bias for a lower variance and is faster to train because searching for the best threshold is time-consuming. 
+		\item We can't tell which tree forest is better between  \textbf{Extremely Randomized Trees} and \textbf{Random Forests} so its recommended to evaluate both of them and compare them using cross-validation.  
 		
     \end{itemize}
 	\section{Boosting}
+	\begin{itemize}
+		\item \textbf{Boosting} is an ensemble method that combine several weak learners to a strong learner.
+		\item There are many boosting algorithms:
+			\begin{itemize}
+				\item AdaBoost.
+				\item Gradient Tree Boosting.
+				\item XGBoost.
+    		\end{itemize}
+    	\item The general idea of boosting is to train predictors sequentially and each trying to correct its predecessor.
+    	\item \textbf{AdaBoost} technique is to pay more attention to the training instances that the predecessor underfitted
+    	\item \textbf{AdaBoost} steps are:
+    	\begin{enumerate}
+    		\item Train a base classifier
+    		\item Increase the weight of the misclassified training instances.
+    		\item Train a second classifier using the updated weights.
+    	\end{enumerate}
+    	\item Once all predictors are trained, the ensemble makes predictions very much like bagging and pasting, except that predictors have different weights depending on their overall accuracy on the weighted training set.
+    	\item One important drawback to this sequential learning technique that it cannot be \textbf{parallelized} because each predictor depends on the previous one.
+    	\item \textbf{AdaBoost} algorithm is:
+    	\begin{enumerate}
+    		\item Each instance weight \textit{$w^{(i)}$} is initially set to \textbf{$\frac{1}{m}$}, then we compute the weighted error rate for every predictor using this equation:
+    		\[ r_{j} = \frac{\underset{\hat{y}_{j}^{(i)} \neq y^{(i)}}{\sum_{i = 1}^{m} w^{(i)}}}{\sum_{i = 1}^{m} w^{(i)}}\]
+    		\item Then we compute the predictor's weight $\alpha$ using this equation
+    		\[ \alpha_{j} = \eta \log \frac{1 - r_{j}}{r_{j}} \]
+    		\item Then update the instance weight using this equation:
+    		\[ w^{(i)} = \begin{cases} 
+      			w^{(i)} & \hat{y}_{j}^{(i)} = y^{(i)} \\
+      			w^{(i)} exp(\alpha_{j}) & \hat{y}_{j}^{(i)} \neq y^{(i)}
+   				\end{cases}
+			\]
+			\item Then we normalize all the instance weights by dividing by $\sum_{i = 1}^{m} w^{(i)}$
+			\item Then the whole process is repeated till the number of desired predictors is reached or when a perfect predictor is found.
+    	\end{enumerate}
+    	\item To make prediction the \textbf{AdaBoost} simply compute the predictions of all the predictors and weighs them using the predictors weights $\alpha_{j}$, then the predicted class is the one that receives the majority of weighted votes
+    	\[ \hat{y}(x) = \underset{k}{argmax} \underset{\hat{y}_{j} = k}{\sum_{j = 1}^{N} \alpha_{j}} \]
+    	where N is the number of predictors. 
+    \end{itemize}
 	\section{Stacking} 
 
 \end{document}
