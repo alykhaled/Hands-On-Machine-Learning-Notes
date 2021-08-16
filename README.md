@@ -8,7 +8,7 @@ My Notes for "Hands-On Machine Learning with Scikit-Learn, Keras and TensorFlow"
 - [ ] Chapter 4
 - [ ] Chapter 5
 - [ ] Chapter 6
-- [ ] Chapter 7
+- [X] Chapter 7
 - [ ] Chapter 8
 - [ ] Chapter 9
 - [ ] Chapter 10
