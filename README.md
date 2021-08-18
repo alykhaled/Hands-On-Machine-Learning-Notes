@@ -1,6 +1,7 @@
 # Hands-On-Machine-Learning-Notes
 
 My Notes for "Hands-On Machine Learning with Scikit-Learn, Keras and TensorFlow" by Aurélien Géron
+
 Book: https://www.amazon.com/Hands-Machine-Learning-Scikit-Learn-TensorFlow/dp/1492032646
 
 - [ ] Chapter 1
