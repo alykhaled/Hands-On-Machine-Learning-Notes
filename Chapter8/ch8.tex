@@ -21,19 +21,26 @@
 	\end{itemize}
 	\subsection{Projection}
 	\begin{itemize}
-		\item 
+		\item In most real world problems, training instances are not spread out uniformly across all dimensions. As a result, all training instances lie within (or close to) a much lower-dimensional subspace of the high dimensional space.
+		\item  
 	\end{itemize}	        
 	\subsection{Manifold Learning}
 	\begin{itemize}
-		\item 
+		\item More generally, a d-dimensional manifold is a part of an n-dimensional space (where d$\ < $\ n) that locally resembles a d-dimensional hyperplane.
+		\item Many dimensionality reduction algorithms work by modeling the manifold on which the training instance lie: this is called \textbf{Manifold Learning}. It relies on the \textbf{manifold assumption} also called \textbf{manifold hypothesis}.
+		\item The manifold assumption is often accompanied by another implicit assumption: that the task at hand will be simpler if expressed in the lower dimensional space of the manifold.
+		\item Reducing the dimensionaliy of your training set before training a model will usually speed up training, but it may not always lead to a better or simpler solution; it all depends on the dataset.
 	\end{itemize}
 	\section{Dimensionality reduction algorithms:}	
 	\begin{itemize}
-		\item There are many dimensionality reduction algorithms like: PCA, Kernel PCA, LLE
+		\item There are many dimensionality reduction algorithms like: PCA, Kernel PCA, LLE.
 	\end{itemize}
 	\subsection{PCA}
 	\begin{itemize}
-		\item 
+		\item \textbf{Principal Component Analysis (PCA)} is by far the most popular dimensionality reduction algorithm.
+		\item It first identify the hyperplane that lies closet to the data, and then it projects the data onto it.
+		\item Before we can project the training set onto a lower-dimensional hyperplane, we first need to choose the right hyperplane by choosing the axis that preserves the \textbf{maximum amount of variance} or the axis that \textbf{minimizes the mean squared distance between the original dataset and its projection onto that axis}.
+		\item PCA identifies the axis that accounts for the largest amount of variance in the training set.
 	\end{itemize}
 	\subsection{Kernel PCA}
 	\begin{itemize}
@@ -43,9 +50,12 @@
 	\begin{itemize}
 		\item 
 	\end{itemize}									
-    \section*{Papers to read later}
+    \section*{Papers and Reports to read later}
     \begin{itemize}
-    	\item Karl Pearson, "On Lines and Planes of Closet Fit to System of Points in Space"
+    	\item Karl Pearson, "On Lines and Planes of Closet Fit to System of Points in Space".
+    	\item Bernhard Scholkopf et al., "Kernel Principal Component Analysis" in Lecture Notes in Computer Science.
+    	\item Gokhan H. Bakir et al., "Learning to Find Pre-Images", Proceeding of the 16th international Conference on Neutral Information Processing Systems.
+    	\item Sam T. Roweis and Lawrence K. Saul, "Nonlinear Dimensionality Reduction by Locally Embedding"
     \end{itemize}
 
 \end{document}
