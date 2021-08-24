@@ -9,9 +9,9 @@ Book: https://www.amazon.com/Hands-Machine-Learning-Scikit-Learn-TensorFlow/dp/1
 - [ ] Chapter 3
 - [ ] Chapter 4
 - [ ] Chapter 5
-- [ ] Chapter 6
-- [X] Chapter 7
-- [ ] Chapter 8 - Working
+- [ ] Chapter 6 - Decision Tree 
+- [X] Chapter 7 - Ensemble Learning
+- [ ] Chapter 8 - Dimensionality Reduction  (Working)
 - [ ] Chapter 9
 - [ ] Chapter 10
 - [ ] Chapter 11
